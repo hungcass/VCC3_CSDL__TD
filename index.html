@@ -1,0 +1,175 @@
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liên kết Tỉnh</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #fff;
+            color: #d10000;
+        }
+        select, button, input {
+            font-size: 18px;
+            margin: 10px;
+            padding: 10px;
+        }
+        a {
+            display: block;
+            margin: 10px;
+            font-size: 20px;
+            color: #d10000;
+            text-decoration: none;
+        }
+        #authSection {
+            margin-top: 20px;
+        }
+        #provinceSection {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>Chọn Tỉnh Để Xem Liên Kết</h1>
+
+    <div id="authSection">
+        <input type="text" id="username" placeholder="Tài khoản">
+        <input type="password" id="password" placeholder="Mật khẩu">
+        <br>
+        <button onclick="login()">Đăng nhập</button>
+        <p id="loginMessage" style="color: red;"></p>
+    </div>
+
+    <div id="provinceSection">
+        <select id="provinceSelect">
+            <option value="">-- Chọn Tỉnh --</option>
+            <option value="AGG">AGG</option>
+            <option value="BDG">BDG</option>
+            <option value="CMU">CMU</option>
+            <option value="BLU">BLU</option>
+            <option value="BPC">BPC</option>
+            <option value="BTE">BTE</option>
+            <option value="CTO">CTO</option>
+            <option value="DNI">DNI</option>
+            <option value="HUG">HUG</option>
+            <option value="KGG">KGG</option>
+            <option value="LAN">LAN</option>
+            <option value="TGG">TGG</option>
+            <option value="TNH">TNH</option>
+            <option value="TVH">TVH</option>
+            <option value="VTU">VTU</option>
+            <option value="VLG">VLG</option>
+        </select>
+        <br>
+        <button onclick="showLinks()">Xem Liên Kết</button>
+        <div id="links"></div>
+
+        <h2>Link theo dõi các tiến độ kế hoạch Truyền Dẫn</h2>
+        <a href="https://docs.google.com/spreadsheets/d/19Pfdb_N-EzcVDeGKmVazfN--ppZ47PvjoJd0FAi6W4c/edit?gid=451975670#gid=451975670" target="_blank">Theo dõi tiến độ NC CLM Truyền dẫn</a>
+        <a href="https://docs.google.com/spreadsheets/d/1l2r0lBkCfckRz1e8u5RGtqcCHtcgZW43GvzmiNMV7iI/edit?gid=1846862249#gid=1846862249" target="_blank">Cập nhật tiến độ NIMS</a>
+        <a href="https://docs.google.com/spreadsheets/d/1e3kjcqyIuoZDnKNMLudg8nSKaYzRCiEV4Zl0ouzcL98/edit?gid=0#gid=0" target="_blank">Tiến độ kiểm tra NIMs</a>
+        <a href="https://docs.google.com/spreadsheets/d/1lcghkXPc886pxBW4e0agVaDDy9LGsE5zeQc1gu0-gBE/edit" target="_blank">Tiến độ kiên cố đường trục</a>
+    </div>
+
+    <script>
+        const credentials = {
+            username: "viettel",
+            password: "Vcc!@#2025"
+        };
+
+        function login() {
+            const usernameInput = document.getElementById("username").value;
+            const passwordInput = document.getElementById("password").value;
+            const message = document.getElementById("loginMessage");
+
+            if (usernameInput === credentials.username && passwordInput === credentials.password) {
+                document.getElementById("authSection").style.display = "none";
+                document.getElementById("provinceSection").style.display = "block";
+            } else {
+                message.textContent = "Tài khoản hoặc mật khẩu không đúng.";
+            }
+        }
+
+        const data = {
+            "AGG": {
+                "appsheet": "https://www.appsheet.com/start/8a144573-7682-4a15-9bc6-d25b3ab1c420",
+                "gsheet": "https://docs.google.com/spreadsheets/d/1_WGAjZ7KC6b15z2qBUAH06pZtG2BsxDlXG3KuhNnWPU/edit?gid=0#gid=0"
+            },
+            "BDG": {
+                "appsheet": "https://www.appsheet.com/start/4441787a-16c5-42db-9a79-ae75c9e13660",
+                "gsheet": "https://docs.google.com/spreadsheets/d/1wxknDCx6GObARm5kTNDYSl6IpoiN_adrWlhhKNmD4n0/edit"
+            },
+            "CMU": {
+                "appsheet": "https://www.appsheet.com/start/0e1e2e9d-6a19-492f-b5cb-f2413b1d2a08",
+                "gsheet": "https://docs.google.com/spreadsheets/d/1X3WSytk5m3ggiSDvZ87AH9RjKJK3e7-ibeQEXwzIQLU/edit?gid=0#gid=0"
+            },
+            "BLU": {
+                "appsheet": "https://www.appsheet.com/start/2fb6ab29-0722-40a1-8176-edd99a80c040",
+                "gsheet": "https://docs.google.com/spreadsheets/d/1yplvcYPOvAttH-tY4PbipZVip1cf1pzC3wUPc0TozVQ/edit?gid=0#gid=0"
+            },
+            "BPC": {
+                "appsheet": "https://www.appsheet.com/start/66081ffd-6c9f-4bd6-8daa-e53344d735d7",
+                "gsheet": "https://docs.google.com/spreadsheets/d/1nPt0xxrdOKY1h4p5WvPFGDAhTBt1xNPrfSJqOgyrk5o/edit?gid=397810575#gid=397810575"
+            },
+            "BTE": {
+                "appsheet": "https://www.appsheet.com/start/6fdacee9-fe1b-41ee-93e6-9137731d8735",
+                "gsheet": "https://docs.google.com/spreadsheets/d/1HGXGv1UA3nVDHWeAR-DOYbD2G_OqvauwFb606gKXprU/edit?gid=0#gid=0"
+            },
+            "CTO": {
+                "appsheet": "https://www.appsheet.com/start/29036189-ce02-4e2c-97c1-d4ae9521a334",
+                "gsheet": "https://docs.google.com/spreadsheets/d/1QF_WtzvvTrW5z7GA-xbIIzXUr-IBivdhdXm5tB7rJIM/edit?gid=0#gid=0"
+            },
+            "DNI": {
+                "appsheet": "https://www.appsheet.com/start/7586f387-b200-4111-9276-05c5812df787",
+                "gsheet": "https://docs.google.com/spreadsheets/d/1z9VqaA8XszafgKj6-mTzXtYEWYMw0DivMoQBgdUvtGA/edit?gid=1845186309#gid=1845186309"
+            },
+            "HUG": {
+                "appsheet": "https://www.appsheet.com/start/695edefd-bd04-4981-841a-a0680e078677",
+                "gsheet": "https://docs.google.com/spreadsheets/d/1RAD4EELyZKdp2pE2Dk1oOg4UeZXycXFugsLc_fiGSEg/edit?gid=1632758551#gid=1632758551"
+            },
+            "KGG": {
+                "appsheet": "https://www.appsheet.com/start/6fe0c8e5-a610-4c16-b5b8-bb98bff623eb",
+                "gsheet": "https://docs.google.com/spreadsheets/d/1BKlTXkFe-2HzS0a8m-ZT0DXBrZ3I8vp6UaGX4AiSuzI/edit?gid=1632758551#gid=1632758551"
+            },
+            "LAN": {
+                "appsheet": "https://www.appsheet.com/start/d1624435-f412-43a4-9053-14e911011890",
+                "gsheet": "https://docs.google.com/spreadsheets/d/1Jz1mU72ASjPpnpTC0WP-DU9aTWF2PO0p422Np5Hb2W4/edit?gid=0#gid=0"
+            },
+            "TGG": {
+                "appsheet": "https://www.appsheet.com/start/e560ac57-cca1-4f1e-9afe-464a3674fe2b",
+                "gsheet": "https://docs.google.com/spreadsheets/d/16POPoYMOuZqXHNhw1dVWNhCi3K_0mM5qHd8h6uNqtlw/edit?gid=78019308#gid=78019308"
+            },
+            "TNH": {
+                "appsheet": "https://www.appsheet.com/start/a6671460-2bec-40a0-bead-4ed78b0fc7e5",
+                "gsheet": "https://docs.google.com/spreadsheets/d/19vlrt3JT1zzQtjVI5EyhdvKFwwe9S2qq3Yk_o4Qdd24/edit?gid=0#gid=0"
+            },
+            "TVH": {
+                "appsheet": "https://www.appsheet.com/start/de49559a-7f96-48ca-a77b-070ab0460321",
+                "gsheet": "https://docs.google.com/spreadsheets/d/1Ny9UPbWlZuewQgRBMjIxg83pAVA03Ggc8mLIFlTlthQ/edit?gid=78019308#gid=78019308"
+            },
+            "VTU": {
+                "appsheet": "https://www.appsheet.com/start/5b5c3a53-e601-4c4c-a44f-a48884074384",
+                "gsheet": "https://docs.google.com/spreadsheets/d/1MGTqK38MIR1_yrjBFTPgenoojbuC4KOQaHCPv6W9dVQ/edit?gid=0#gid=0"
+            },
+            "VLG": {
+                "appsheet": "https://www.appsheet.com/start/ef221cd4-e87f-4a82-9619-35ddf9376ac5",
+                "gsheet": "https://docs.google.com/spreadsheets/d/1a-S3Ep81oVlKu6x9XGcgwEcC4pm8-tcz0rK-3E6RV7k/edit?gid=0#gid=0"
+            },
+        };
+
+        function showLinks() {
+            const province = document.getElementById("provinceSelect").value;
+            const linksDiv = document.getElementById("links");
+            if (province && data[province]) {
+                linksDiv.innerHTML = `
+                    <a href="${data[province].appsheet}" target="_blank">Mở AppSheet</a>
+                    <a href="${data[province].gsheet}" target="_blank">Mở Google Sheet</a>
+                `;
+            } else {
+                linksDiv.innerHTML = "<p>Vui lòng chọn tỉnh.</p>";
+            }
+        }
+    </script>
+</body>
+</html>
